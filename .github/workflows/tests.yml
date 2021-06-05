@@ -1,0 +1,46 @@
+on: [push, pull_request]
+
+env:
+  RUBY_VERSION: 3.0.1
+  RAILS_ENV: test
+
+jobs:
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres:13.1
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: Install Postgres Client
+        run: sudo apt-get -yqq install libpq-dev
+
+      - name: Install Dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+
+      - name: Setup Database
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        run: |
+          cp config/database.yml.github-actions config/database.yml
+          bin/rails db:create db:schema:load
+
+      - name: Run Tests
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        run: bin/rspec

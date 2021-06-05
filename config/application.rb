@@ -14,5 +14,6 @@ module SearchboardPlus
     config.load_defaults 6.1
     config.generators.system_tests = nil
     config.react.server_renderer_extensions = %w[jsx js tsx ts]
+    config.autoload_paths += Dir[Rails.root.join('app', 'utils')]
   end
 end
