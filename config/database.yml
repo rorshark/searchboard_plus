@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+
+development:
+  <<: *default
+  database: searchboard_plus_development
+test:
+  <<: *default
+  database: searchboard_plus_test
+production:
+  <<: *default
+  database: searchboard_plus_production
+  username: searchboard_plus
+  password: <%= ENV['SEARCHBOARD_PLUS_DATABASE_PASSWORD'] %>
