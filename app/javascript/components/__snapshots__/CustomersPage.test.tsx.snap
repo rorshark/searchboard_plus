@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders the customers page 1`] = `
+<div
+  data-testid="loading"
+>
+  Loading...
+</div>
+`;
