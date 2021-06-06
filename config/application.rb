@@ -18,5 +18,9 @@ module SearchboardPlus
 
     # https://github.com/vigetlabs/olive_branch
     config.middleware.use OliveBranch::Middleware
+
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
