@@ -19,6 +19,17 @@
           },
           "last_name": {
             "type": "string"
+          },
+          "company": {
+            "type": "object",
+            "required": [
+              "company_name"
+            ],
+            "properties": {
+              "company_name": {
+                "type": "string"
+              }
+            }
           }
         }
       }

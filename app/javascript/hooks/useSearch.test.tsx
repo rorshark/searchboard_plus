@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { mocked } from 'ts-jest/utils'
 import { useSearch } from './useSearch'
 import { fetchCustomers } from '../api/customers'
+import { customer } from '../factories/customers'
 
 jest.mock('../api/customers')
 
@@ -9,10 +10,7 @@ const mockFetch = mocked(fetchCustomers)
 
 test('it fetches customers on mount', async () => {
   const mockResponse = {
-    customers: [{
-      firstName: 'Dougy',
-      lastName: 'Pauly'
-    }]
+    customers: customer.buildList(1)
   }
 
   mockFetch.mockResolvedValue(mockResponse)

@@ -2,12 +2,13 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import CustomersTable from './CustomersTable'
 import { SearchContext } from '../context/SearchContext'
+import { customer } from '../factories/customers'
 
 test('it renders a loading screen', () => {
   const search = {
+    error: false,
     loading: true,
-    customers: [],
-    error: false
+    customers: []
   }
 
   render(
@@ -27,9 +28,9 @@ test('it renders a loading screen', () => {
 
 test('it renders an error screen', () => {
   const search = {
+    error: true,
     loading: false,
-    customers: [],
-    error: true
+    customers: []
   }
 
   render(
@@ -49,9 +50,15 @@ test('it renders an error screen', () => {
 
 test('it renders the customers table when loaded', async () => {
   const search = {
+    error: false,
     loading: false,
-    customers: [{ firstName: 'Dougy', lastName: 'Pauly' }],
-    error: false
+    customers: customer.buildList(1, { 
+      firstName: 'Dougy', 
+      lastName: 'Pauly', 
+      company: { 
+        companyName: 'New Relic' 
+      } 
+    })
   }
 
   render(

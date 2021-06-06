@@ -28,6 +28,9 @@ exports[`it renders the customers table when loaded 1`] = `
       <th>
         Last Name
       </th>
+      <th>
+        Company Name
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +40,9 @@ exports[`it renders the customers table when loaded 1`] = `
       </td>
       <td>
         Pauly
+      </td>
+      <td>
+        New Relic
       </td>
     </tr>
   </tbody>
