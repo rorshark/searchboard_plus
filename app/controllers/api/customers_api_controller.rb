@@ -1,5 +1,5 @@
 module Api
-  class CustomersApiController < ApplicationController
+  class CustomersApiController < ApiController
     def index
       render json: {
         customers: [{

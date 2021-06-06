@@ -2,6 +2,7 @@ on: [push, pull_request]
 
 env:
   RUBY_VERSION: 3.0.1
+  NODE_VERSION: 14.x
   RAILS_ENV: test
 
 jobs:
@@ -44,3 +45,18 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: bin/rspec
+
+  yarn-test:
+    name: Jest
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Run Tests
+        run: yarn test

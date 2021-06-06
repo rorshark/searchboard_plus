@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a loading screen 1`] = `
+<div
+  data-testid="loading"
+>
+  Loading...
+</div>
+`;
+
+exports[`it renders an error screen 1`] = `
+<div
+  data-testid="error"
+>
+  Oops, something went wrong.
+</div>
+`;
+
+exports[`it renders the customers table when loaded 1`] = `
+<table
+  data-testid="customers-table"
+>
+  <thead>
+    <tr>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Dougy
+      </td>
+      <td>
+        Pauly
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
