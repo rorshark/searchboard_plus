@@ -22,6 +22,7 @@ const CustomersTable: React.FC = () => {
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Company Name</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,7 @@ const CustomersTable: React.FC = () => {
           <tr key={index}>
             <td>{customer.firstName}</td>
             <td>{customer.lastName}</td>
+            <td>{customer.company?.companyName}</td>
           </tr>
         ))}
       </tbody>
