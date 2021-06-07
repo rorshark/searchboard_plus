@@ -14,7 +14,10 @@ module SearchboardPlus
     config.load_defaults 6.1
     config.generators.system_tests = nil
     config.react.server_renderer_extensions = %w[jsx js tsx ts]
-    config.autoload_paths += Dir[Rails.root.join('app', 'utils')]
+
+    %w[presenters services utils].each do |folder|
+      config.autoload_paths += Dir[Rails.root.join('app', folder)]
+    end
 
     # https://github.com/vigetlabs/olive_branch
     config.middleware.use OliveBranch::Middleware
