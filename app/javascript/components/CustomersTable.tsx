@@ -1,8 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { SearchContext } from '../context/SearchContext'
 
 const CustomersTable: React.FC = () => {
-  const { error, loading, customers } = useContext(SearchContext)
+  const { error, loading, customers, fetchCustomers } = useContext(SearchContext)
+
+  useEffect(() => {
+    fetchCustomers()
+  }, [])
 
   if (error) return (
     <div data-testid="error">

@@ -1,14 +1,24 @@
 import React from 'react'
-import { useSearch, SearchAPI } from '../hooks/useSearch'
+import { useSearch, SearchAPI, SearchParams } from '../hooks/useSearch'
 
-export const SearchContext: React.Context<SearchAPI> = React.createContext({
+export const defaultSearchApi: SearchAPI = {
   error: false,
   loading: true,
-  customers: []
-})
+  customers: [],
+  search: '',
+  setSearch: (_) => {},
+  companies: [],
+  selectedCompany: null,
+  setSelectedCompany: (_) => {},
+  fetchCustomers: async () => {}
+}
 
-export const SearchProvider: React.FC = ({ children }) => {
-  const search = useSearch()
+export const SearchContext: React.Context<SearchAPI> = React.createContext(defaultSearchApi)
+
+export const SearchProvider: React.FC<{
+  initialSearchParams: SearchParams
+}> = ({ initialSearchParams, children }) => {
+  const search = useSearch(initialSearchParams)
 
   return (
     <SearchContext.Provider value={search}>
