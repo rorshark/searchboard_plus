@@ -3,13 +3,13 @@ import { render, screen } from '@testing-library/react'
 import CustomersTable from './CustomersTable'
 import { SearchContext } from '../context/SearchContext'
 import { customer } from '../factories/customers'
+import { searchApi } from '../factories/search'
 
 test('it renders a loading screen', () => {
-  const search = {
+  const search = searchApi.build({
     error: false,
     loading: true,
-    customers: []
-  }
+  })
 
   render(
     <SearchContext.Provider value={search}>
@@ -27,11 +27,10 @@ test('it renders a loading screen', () => {
 })
 
 test('it renders an error screen', () => {
-  const search = {
+  const search = searchApi.build({
     error: true,
     loading: false,
-    customers: []
-  }
+  })
 
   render(
     <SearchContext.Provider value={search}>
@@ -49,7 +48,7 @@ test('it renders an error screen', () => {
 })
 
 test('it renders the customers table when loaded', async () => {
-  const search = {
+  const search = searchApi.build({
     error: false,
     loading: false,
     customers: customer.buildList(1, { 
@@ -59,7 +58,7 @@ test('it renders the customers table when loaded', async () => {
         companyName: 'New Relic' 
       } 
     })
-  }
+  })
 
   render(
     <SearchContext.Provider value={search}>

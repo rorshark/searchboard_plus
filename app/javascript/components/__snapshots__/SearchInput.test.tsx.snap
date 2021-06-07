@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it populates the input field 1`] = `
+<input
+  data-testid="search-input"
+  name="search"
+  type="text"
+  value="Dougy Pauly"
+/>
+`;
+
+exports[`it renders a text input 1`] = `
+<input
+  data-testid="search-input"
+  name="search"
+  type="text"
+  value=""
+/>
+`;

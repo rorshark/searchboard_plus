@@ -1,18 +1,26 @@
 module Api
   class CustomersApiController < ApiController
     def index
-      render json: {
-        customers: [{
-          first_name: 'Dougy',
-          last_name: 'Pauly',
-          company: {
-            company_name: 'New Relic'
-          }
-        }, {
-          first_name: 'Mister',
-          last_name: 'Bones'
-        }]
-      }
+      customers = CustomerSearch.execute(
+        search_query: search_query,
+        company_name: company_name
+      )
+
+      render json: CustomerPresenter.present_all(customers)
+    end
+
+    private
+
+    def search_query
+      search_params[:search] || ''
+    end
+
+    def company_name
+      search_params[:filter_by_company_name] || ''
+    end
+
+    def search_params
+      params.permit(:search, :filter_by_company_name, :format)
     end
   end
 end
