@@ -51,6 +51,7 @@ test('clearing a company', () => {
 
   const context = searchApi.build({
     setSelectedCompany,
+    selectedCompany: 'New Relic',
     companies: company.buildList(1, {
       companyName: 'New Relic'
     })

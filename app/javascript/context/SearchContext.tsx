@@ -8,7 +8,7 @@ export const defaultSearchApi: SearchAPI = {
   search: '',
   setSearch: (_) => {},
   companies: [],
-  selectedCompany: null,
+  selectedCompany: '',
   setSelectedCompany: (_) => {},
   fetchCustomers: async () => {},
   fetchCompanies: async () => {}

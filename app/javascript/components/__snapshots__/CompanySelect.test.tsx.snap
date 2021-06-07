@@ -1,20 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it renders a dropdown list of companies 1`] = `
-<select
+<input
+  aria-hidden="true"
+  class="MuiSelect-nativeInput"
   data-testid="company-select"
-  name="company"
->
-  <option
-    value=""
-  >
-    Please choose an option
-  </option>
-  <option
-    data-testid="company-0"
-    value="New Relic"
-  >
-    New Relic
-  </option>
-</select>
+  tabindex="-1"
+  value=""
+/>
 `;

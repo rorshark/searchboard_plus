@@ -2,8 +2,9 @@
 
 exports[`it populates the input field 1`] = `
 <input
+  aria-invalid="false"
+  class="MuiInputBase-input MuiOutlinedInput-input"
   data-testid="search-input"
-  name="search"
   type="text"
   value="Dougy Pauly"
 />
@@ -11,8 +12,9 @@ exports[`it populates the input field 1`] = `
 
 exports[`it renders a text input 1`] = `
 <input
+  aria-invalid="false"
+  class="MuiInputBase-input MuiOutlinedInput-input"
   data-testid="search-input"
-  name="search"
   type="text"
   value=""
 />

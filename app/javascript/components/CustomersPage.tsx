@@ -1,22 +1,18 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import { SearchProvider } from '../context/SearchContext'
-import SearchInput from './SearchInput'
-import CompanySelect from './CompanySelect'
-import SubmitButton from './SubmitButton'
-import CustomersTable from './CustomersTable'
 import { SearchParams } from '../hooks/useSearch'
+import SearchForm from './SearchForm'
+import CustomersTable from './CustomersTable'
 
 export const CustomersPage: React.FC = () => {
   return (
     <div data-testid="customers-page">
-      <div>
-        <SearchInput />
-        <CompanySelect />
-        <SubmitButton />
-      </div>
-      <div>
-        <CustomersTable />
-      </div>
+      <Typography variant="h4">
+        Customer Search
+      </Typography>
+      <SearchForm />
+      <CustomersTable />
     </div>
   )
 }

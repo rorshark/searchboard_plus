@@ -12,7 +12,7 @@ export type SearchAPI = {
   search: string
   setSearch: (q: string) => void
   companies: Company[]
-  selectedCompany?: string
+  selectedCompany: string
   setSelectedCompany: (c: string) => void
   fetchCustomers: () => Promise<void>
   fetchCompanies: () => Promise<void>
