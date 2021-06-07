@@ -2,8 +2,44 @@
 
 exports[`it renders the customers page 1`] = `
 <div
-  data-testid="loading"
+  data-testid="customers-page"
 >
-  Loading...
+  <div>
+    <label>
+      Search
+      <input
+        data-testid="search-input"
+        name="search"
+        type="text"
+        value=""
+      />
+    </label>
+    <label>
+      Company Name
+      <select
+        data-testid="company-select"
+        name="company"
+      >
+        <option
+          value=""
+        >
+          Please choose an option
+        </option>
+      </select>
+    </label>
+    <button
+      data-testid="submit-button"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+  <div>
+    <div
+      data-testid="loading"
+    >
+      Loading...
+    </div>
+  </div>
 </div>
 `;

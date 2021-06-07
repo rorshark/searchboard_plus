@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'customers' => 'customers_api#index'
+    get 'companies' => 'companies_api#index'
   end
 end

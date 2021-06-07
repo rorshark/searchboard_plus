@@ -3,6 +3,7 @@ import { Customer } from '../types/customers'
 import { Company } from '../types/companies'
 import { pushParams } from '../utils/url'
 import * as customersApi from '../api/customers'
+import * as companiesApi from '../api/companies'
 
 export type SearchAPI = {
   error: boolean
@@ -14,6 +15,7 @@ export type SearchAPI = {
   selectedCompany?: string
   setSelectedCompany: (c: string) => void
   fetchCustomers: () => Promise<void>
+  fetchCompanies: () => Promise<void>
 }
 
 export type SearchParams = {
@@ -21,16 +23,10 @@ export type SearchParams = {
   filter_by_company_name?: string
 }
 
-const mockCompanies = [
-  { companyName: 'Hettinger and Sons' },
-  { companyName: 'Fritsch-Parker' },
-  { companyName: 'Grimes Inc' }
-]
-
 export const useSearch = (params: SearchParams): SearchAPI => {
   const [search, setSearch] = useState(params.search)
   const [selectedCompany, setSelectedCompany] = useState(params.filter_by_company_name)
-  const [companies] = useState(mockCompanies)
+  const [companies, setCompanies] = useState([])
   const [customers, setCustomers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -50,6 +46,15 @@ export const useSearch = (params: SearchParams): SearchAPI => {
     }
   }, [searchParams, setCustomers, setLoading, setError])
 
+  const fetchCompanies = useCallback(async () => {
+    try {
+      const { companies } = await companiesApi.fetchCompanies()
+      setCompanies(companies)
+    } catch {
+      setCompanies([])
+    }
+  }, [])
+
   useEffect(() => {
     setSearchParams({
       search,
@@ -66,6 +71,7 @@ export const useSearch = (params: SearchParams): SearchAPI => {
     companies,
     selectedCompany,
     setSelectedCompany,
-    fetchCustomers
+    fetchCustomers,
+    fetchCompanies
   }
 }

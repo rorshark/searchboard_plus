@@ -1,0 +1,23 @@
+{
+  "$id": "companies_response.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "companies"
+  ],
+  "properties": {
+    "customers": {
+      "type": "array",
+      "items": {
+        "required": [
+          "company_name"
+        ],
+        "properties": {
+          "company_name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
