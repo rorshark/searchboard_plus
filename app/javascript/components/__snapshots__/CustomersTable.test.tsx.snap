@@ -18,30 +18,54 @@ exports[`it renders an error screen 1`] = `
 
 exports[`it renders the customers table when loaded 1`] = `
 <table
+  class="MuiTable-root"
   data-testid="customers-table"
 >
-  <thead>
-    <tr>
-      <th>
+  <thead
+    class="MuiTableHead-root"
+  >
+    <tr
+      class="MuiTableRow-root MuiTableRow-head"
+    >
+      <th
+        class="MuiTableCell-root MuiTableCell-head WithStyles(ForwardRef(TableCell))-head-1"
+        scope="col"
+      >
         First Name
       </th>
-      <th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head WithStyles(ForwardRef(TableCell))-head-1"
+        scope="col"
+      >
         Last Name
       </th>
-      <th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head WithStyles(ForwardRef(TableCell))-head-1"
+        scope="col"
+      >
         Company Name
       </th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>
+  <tbody
+    class="MuiTableBody-root"
+  >
+    <tr
+      class="MuiTableRow-root"
+    >
+      <td
+        class="MuiTableCell-root MuiTableCell-body"
+      >
         Dougy
       </td>
-      <td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body"
+      >
         Pauly
       </td>
-      <td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body"
+      >
         New Relic
       </td>
     </tr>

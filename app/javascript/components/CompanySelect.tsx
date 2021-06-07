@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { SearchContext } from '../context/SearchContext'
+import { InputLabel, Select, MenuItem } from '@material-ui/core'
 
 const CompanySelect: React.FC = () => {
   const { 
@@ -33,25 +34,31 @@ const CompanySelect: React.FC = () => {
   }, [])
 
   return (
-    <label>
-      Company Name
-      <select 
-        name="company" 
-        data-testid="company-select" 
-        onChange={handleSelect}>
-        <option value="">Please choose an option</option>
+    <>
+      <InputLabel id="company-name">Company Name</InputLabel>
+      <Select 
+        labelId="company-name" 
+        inputProps={{
+          "data-testid": "company-select"
+        }}
+        onChange={handleSelect}
+        value={selectedCompany}>
+
+        <MenuItem value="">
+          Select an option
+        </MenuItem>
 
         {companies.map(({ companyName }, index) => (
-          <option 
+          <MenuItem 
             selected={isSelected(companyName)} 
             data-testid={`company-${index}`} 
             key={index} 
             value={companyName}>
             {companyName}
-          </option>
+          </MenuItem>
         ))}
-      </select>
-    </label>
+      </Select>
+    </>
   )
 }
 

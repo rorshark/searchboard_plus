@@ -1,8 +1,29 @@
 import React, { useContext, useEffect } from 'react'
 import { SearchContext } from '../context/SearchContext'
 
+import { 
+  Paper, 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer, 
+  TableHead, 
+  TableRow,
+  withStyles,
+} from '@material-ui/core'
+
 const CustomersTable: React.FC = () => {
   const { error, loading, customers, fetchCustomers } = useContext(SearchContext)
+
+  const HeaderCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell)
 
   useEffect(() => {
     fetchCustomers()
@@ -21,24 +42,26 @@ const CustomersTable: React.FC = () => {
   )
 
   return (
-    <table data-testid="customers-table">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Company Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        {customers.map((customer, index) => (
-          <tr key={index}>
-            <td>{customer.firstName}</td>
-            <td>{customer.lastName}</td>
-            <td>{customer.company?.companyName}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <TableContainer component={Paper}>
+      <Table data-testid="customers-table">
+        <TableHead>
+          <TableRow>
+            <HeaderCell>First Name</HeaderCell>
+            <HeaderCell>Last Name</HeaderCell>
+            <HeaderCell>Company Name</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {customers.map((customer, index) => (
+            <TableRow key={index}>
+              <TableCell>{customer.firstName}</TableCell>
+              <TableCell>{customer.lastName}</TableCell>
+              <TableCell>{customer.company?.companyName}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 

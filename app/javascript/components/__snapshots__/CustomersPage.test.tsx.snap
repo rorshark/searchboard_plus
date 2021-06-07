@@ -4,42 +4,132 @@ exports[`it renders the customers page 1`] = `
 <div
   data-testid="customers-page"
 >
-  <div>
-    <label>
-      Search
-      <input
-        data-testid="search-input"
-        name="search"
-        type="text"
-        value=""
-      />
-    </label>
-    <label>
-      Company Name
-      <select
-        data-testid="company-select"
-        name="company"
-      >
-        <option
-          value=""
-        >
-          Please choose an option
-        </option>
-      </select>
-    </label>
-    <button
-      data-testid="submit-button"
-      type="submit"
-    >
-      Submit
-    </button>
-  </div>
-  <div>
+  <h4
+    class="MuiTypography-root MuiTypography-h4"
+  >
+    Customer Search
+  </h4>
+  <div
+    data-testid="search-form"
+  >
     <div
-      data-testid="loading"
+      class="MuiFormControl-root makeStyles-formControl-1"
     >
-      Loading...
+      <div
+        class="MuiFormControl-root MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Search
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="search-input"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-4"
+            >
+              <span>
+                Search
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
     </div>
+    <div
+      class="MuiFormControl-root makeStyles-formControl-1"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink="false"
+        id="company-name"
+      >
+        Company Name
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+      >
+        <div
+          aria-haspopup="listbox"
+          aria-labelledby="company-name"
+          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+          role="button"
+          tabindex="0"
+        >
+          <span>
+            ​
+          </span>
+        </div>
+        <input
+          aria-hidden="true"
+          class="MuiSelect-nativeInput"
+          data-testid="company-select"
+          tabindex="-1"
+          value=""
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-3"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root makeStyles-formControl-1"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        data-testid="submit-button"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Search
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    data-testid="loading"
+  >
+    Loading...
   </div>
 </div>
 `;

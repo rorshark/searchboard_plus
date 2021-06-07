@@ -2,9 +2,18 @@
 
 exports[`it renders a submit button 1`] = `
 <button
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
   data-testid="submit-button"
+  tabindex="0"
   type="submit"
 >
-  Submit
+  <span
+    class="MuiButton-label"
+  >
+    Search
+  </span>
+  <span
+    class="MuiTouchRipple-root"
+  />
 </button>
 `;
