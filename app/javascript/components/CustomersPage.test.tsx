@@ -1,12 +1,17 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import CustomersPage from './CustomersPage'
-import { searchParams } from '../factories/search'
+import { SearchContext } from '../context/SearchContext'
+import { CustomersPage } from './CustomersPage'
+import { searchApi } from '../factories/search'
 
 test('it renders the customers page', () => {
-  render(<CustomersPage {...searchParams.build()} />)
+  render(
+    <SearchContext.Provider value={searchApi.build()}>
+      <CustomersPage />
+    </SearchContext.Provider>
+  )
 
-  const element = screen.getByTestId('loading')
+  const element = screen.getByTestId('customers-page')
 
   expect(element).toMatchSnapshot()
 })

@@ -10,7 +10,8 @@ export const defaultSearchApi: SearchAPI = {
   companies: [],
   selectedCompany: null,
   setSelectedCompany: (_) => {},
-  fetchCustomers: async () => {}
+  fetchCustomers: async () => {},
+  fetchCompanies: async () => {}
 }
 
 export const SearchContext: React.Context<SearchAPI> = React.createContext(defaultSearchApi)

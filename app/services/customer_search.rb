@@ -1,8 +1,15 @@
 class CustomerSearch
-  def self.execute(limit: 25, search_query: nil, company_name: nil, **)
+  def self.execute(limit: 25, search_query: '', company_name: '', **)
     q = Customer.includes(:company)
-    q = q.where(first_name: search_query) unless search_query.blank?
-    q = q.where(company: { company_name: company_name }) unless company_name.blank?
+
+    unless search_query.blank?
+      q = q.where(first_name: search_query).or(q.where(last_name: search_query))
+    end
+
+    unless company_name.blank?
+      q = q.where(company: { company_name: company_name })
+    end
+
     q.limit(limit)
   end
 end

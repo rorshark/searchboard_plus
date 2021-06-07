@@ -6,9 +6,9 @@ import SubmitButton from './SubmitButton'
 import CustomersTable from './CustomersTable'
 import { SearchParams } from '../hooks/useSearch'
 
-export const CustomersPage: React.FC<SearchParams> = (props) => {
+export const CustomersPage: React.FC = () => {
   return (
-    <SearchProvider initialSearchParams={props}>
+    <div data-testid="customers-page">
       <div>
         <SearchInput />
         <CompanySelect />
@@ -17,8 +17,12 @@ export const CustomersPage: React.FC<SearchParams> = (props) => {
       <div>
         <CustomersTable />
       </div>
-    </SearchProvider>
+    </div>
   )
 }
 
-export default CustomersPage
+export default (props: SearchParams) => (
+  <SearchProvider initialSearchParams={props}>
+    <CustomersPage />
+  </SearchProvider>
+)
