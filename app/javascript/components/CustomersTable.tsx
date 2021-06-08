@@ -12,18 +12,18 @@ import {
   withStyles,
 } from '@material-ui/core'
 
+const HeaderCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell)
+
 const CustomersTable: React.FC = () => {
   const { error, loading, customers, fetchCustomers } = useContext(SearchContext)
-
-  const HeaderCell = withStyles((theme) => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    body: {
-      fontSize: 14,
-    },
-  }))(TableCell)
 
   useEffect(() => {
     fetchCustomers()

@@ -34,12 +34,12 @@ test('it populates the input field', () => {
   expect(element).toMatchSnapshot()
 })
 
-test('it fetches customers when the enter key is pressed', () => {
-  const fetchCustomers = jest.fn()
+test('it calls setSearch', () => {
+  const setSearch = jest.fn()
 
   const context = searchApi.build({
     search: 'Dougy Pauly',
-    fetchCustomers
+    setSearch
   })
 
   render(
@@ -50,7 +50,7 @@ test('it fetches customers when the enter key is pressed', () => {
 
   const element = screen.getByTestId('search-input')
 
-  fireEvent.keyDown(element, { key: 'Enter', code: 'Enter' })
+  fireEvent.change(element, { target: { value: 'Test' } })
 
-  expect(fetchCustomers).toHaveBeenCalled()
+  expect(setSearch.mock.calls[0][0]).toEqual('Test')
 })

@@ -12,11 +12,11 @@ module Api
     private
 
     def search_query
-      search_params[:search] || ''
+      search_params[:search]
     end
 
     def company_name
-      search_params[:filter_by_company_name] || ''
+      search_params[:filter_by_company_name]
     end
 
     def search_params

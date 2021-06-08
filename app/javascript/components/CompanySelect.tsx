@@ -11,10 +11,6 @@ const CompanySelect: React.FC = () => {
     setSelectedCompany 
   } = useContext(SearchContext)
 
-  const handleSelect = (evt: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCompany(evt.target.value)
-  }
-
   useEffect(() => {
     fetchCompanies()
   }, [])
@@ -27,8 +23,8 @@ const CompanySelect: React.FC = () => {
         inputProps={{
           "data-testid": "company-select"
         }}
-        onChange={handleSelect}
-        value={selectedCompany}>
+        value={selectedCompany}
+        onChange={(evt) => setSelectedCompany(evt.target.value as string)}>
 
         <MenuItem value={ALL_COMPANIES}>
           All Companies

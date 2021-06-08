@@ -49,7 +49,7 @@ export const useSearch = (params: SearchParams): SearchAPI => {
       setLoading(false)
       setError(true)
     }
-  }, [searchParams, setCustomers, setLoading, setError])
+  }, [searchParams])
 
   const fetchCompanies = useCallback(async () => {
     try {

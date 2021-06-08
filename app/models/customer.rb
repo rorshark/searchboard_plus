@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
 
   belongs_to :company
 
-  pg_search_scope :search_name,
+  pg_search_scope :search,
                   against: { first_name: 'A', last_name: 'B' },
                   using: {
                     tsearch: {
