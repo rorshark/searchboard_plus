@@ -2,11 +2,12 @@
 
 ## Setup
 
-This is a standard Rails application using postgresql as the database.
+This is set up as a standard Rails application using postgresql as the database.
+Here's a blog that generally covers the setup:
 
-For setting up postgresql, either use homebrew or docker.
+https://medium.com/@dyanagi/how-to-run-an-existing-ruby-on-rails-project-after-cloning-a-repository-8535e4f14bc9
 
-To install dependencies and set up the database (assuming you have postgres running)
+To install dependencies and set up the database (assuming you have postgres running locally),
 run the following command:
 
 ```
