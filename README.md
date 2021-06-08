@@ -44,26 +44,21 @@ Visit `http://localhost:3000` in your browser.
 This app uses the following:
 
 - rails
-- postgresql
-- webpacker
 - react-rails
-- pg_search
+- postgresql
 
-The architural choices were made primary for operational simplicity
-and ease of development. For example, not needing to run client and
-server as separate apps.
+These were made primary for operational simplicity and ease of 
+development. For example, not needing to test/run client and server 
+as separate apps.
 
 From a high level, there's a "customers" controller that bootstraps
-a React application with data sourced from the URL. Once the app
-loads it immediately fetches data from a couple of API controllers
-(one for the list of customers, one for the list of companies).
-
-From that point forward, UI interactions are handled by the JS client.
+a React application. Once the app loads, it immediately fetches data 
+from a couple of API controllers (one for the list of customers, one 
+for the list of companies).
 
 For the client architecture, I've used the React Context API to
-provide data and functionality to the UI components. There's an API layer,
-a controller layer (via useSearch hook) and view components.
+provide data and actions to the UI components.
 
-For the first/last name search functionality I've used a postgres tsvector
+For the first/last name search functionality, I've used a postgres tsvector
 column to store the indexed search terms. This can perform searches faster 
 than ILIKE, and better support partial matches.
