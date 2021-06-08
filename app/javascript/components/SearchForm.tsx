@@ -2,7 +2,6 @@ import React from 'react'
 import { FormControl, makeStyles } from '@material-ui/core'
 import SearchInput from './SearchInput'
 import CompanySelect from './CompanySelect'
-import SubmitButton from './SubmitButton'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,11 +18,8 @@ const SearchForm: React.FC = () => {
       <FormControl className={classes.formControl}>
         <SearchInput />
       </FormControl>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl className={classes.formControl} variant="outlined">
         <CompanySelect />
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <SubmitButton />
       </FormControl>
     </div>
   )

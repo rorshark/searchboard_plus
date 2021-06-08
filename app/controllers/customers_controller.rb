@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
   private
 
   def search_query
-    search_params[:search] || ''
+    search_params[:search]
   end
 
   def filter_by_company_name

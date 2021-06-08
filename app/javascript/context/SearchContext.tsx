@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSearch, SearchAPI, SearchParams } from '../hooks/useSearch'
 
-export const defaultSearchApi: SearchAPI = {
+export const DEFAULT_SEARCH_API: SearchAPI = {
   error: false,
   loading: true,
   customers: [],
@@ -14,7 +14,7 @@ export const defaultSearchApi: SearchAPI = {
   fetchCompanies: async () => {}
 }
 
-export const SearchContext: React.Context<SearchAPI> = React.createContext(defaultSearchApi)
+export const SearchContext: React.Context<SearchAPI> = React.createContext(DEFAULT_SEARCH_API)
 
 export const SearchProvider: React.FC<{
   initialSearchParams: SearchParams
