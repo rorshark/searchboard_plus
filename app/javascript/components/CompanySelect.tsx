@@ -45,7 +45,7 @@ const CompanySelect: React.FC = () => {
         value={selectedCompany}>
 
         <MenuItem value="">
-          Select an option
+          All Companies
         </MenuItem>
 
         {companies.map(({ companyName }, index) => (
