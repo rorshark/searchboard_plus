@@ -45,27 +45,3 @@ test('selecting a company', () => {
 
   expect(setSelectedCompany.mock.calls[0][0]).toEqual('New Relic')
 })
-
-test('clearing a company', () => {
-  const setSelectedCompany = jest.fn()
-
-  const context = searchApi.build({
-    setSelectedCompany,
-    selectedCompany: 'New Relic',
-    companies: company.buildList(1, {
-      companyName: 'New Relic'
-    })
-  })
-
-  render(
-    <SearchContext.Provider value={context}>
-      <CompanySelect />
-    </SearchContext.Provider>
-  )
-
-  const element = screen.getByTestId('company-select')
-
-  fireEvent.change(element, { target: { value: '' } })
-
-  expect(setSelectedCompany.mock.calls[0][0]).toEqual('')
-})
