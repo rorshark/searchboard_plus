@@ -5,6 +5,8 @@ import { pushParams } from '../utils/url'
 import * as customersApi from '../api/customers'
 import * as companiesApi from '../api/companies'
 
+export const ALL_COMPANIES = '_ALL_'
+
 export type SearchAPI = {
   error: boolean
   loading: boolean
@@ -19,13 +21,16 @@ export type SearchAPI = {
 }
 
 export type SearchParams = {
-  search?: string
-  filter_by_company_name?: string
+  search: string
+  filter_by_company_name: string
 }
 
 export const useSearch = (params: SearchParams): SearchAPI => {
-  const [search, setSearch] = useState(params.search)
-  const [selectedCompany, setSelectedCompany] = useState(params.filter_by_company_name)
+  const initialSearch = params.search || ''
+  const initialCompany = params.filter_by_company_name || ''
+
+  const [search, setSearch] = useState(initialSearch)
+  const [selectedCompany, setSelectedCompany] = useState(initialCompany)
   const [companies, setCompanies] = useState([])
   const [customers, setCustomers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -56,11 +61,17 @@ export const useSearch = (params: SearchParams): SearchAPI => {
   }, [])
 
   useEffect(() => {
+    const companyName = selectedCompany === ALL_COMPANIES ? '' : selectedCompany
+
     setSearchParams({
       search,
-      filter_by_company_name: selectedCompany
+      filter_by_company_name: companyName
     })
   }, [search, selectedCompany])
+
+  useEffect(() => {
+    fetchCustomers()
+  }, [searchParams])
 
   return {
     error,

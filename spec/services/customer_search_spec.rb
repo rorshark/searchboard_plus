@@ -45,6 +45,13 @@ RSpec.describe CustomerSearch do
       expect(customers.first.first_name).to eq('Mister')
     end
 
+    it 'supports partial matches' do
+      customers = CustomerSearch.execute(search_query: 'Doug P')
+
+      expect(customers.size).to eq 1
+      expect(customers.first.first_name).to eq('Dougy')
+    end
+
     it 'defaults to all records' do
       customers = CustomerSearch.execute
 

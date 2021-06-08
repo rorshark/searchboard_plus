@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { SearchContext } from '../context/SearchContext'
+import { ALL_COMPANIES } from '../hooks/useSearch'
 import { InputLabel, Select, MenuItem } from '@material-ui/core'
 
 const CompanySelect: React.FC = () => {
@@ -11,22 +12,7 @@ const CompanySelect: React.FC = () => {
   } = useContext(SearchContext)
 
   const handleSelect = (evt: React.ChangeEvent<HTMLSelectElement>) => {
-    const companyName = evt.target.value
-
-    if (!companyName) {
-      setSelectedCompany('')
-      return
-    }
-
-    const company = companies.find((c) => c.companyName === companyName)
-
-    if (!company) throw new Error(`${companyName} not found`)
-
-    setSelectedCompany(company.companyName)
-  }
-
-  const isSelected = (name: string) => {
-    return selectedCompany === name
+    setSelectedCompany(evt.target.value)
   }
 
   useEffect(() => {
@@ -44,13 +30,12 @@ const CompanySelect: React.FC = () => {
         onChange={handleSelect}
         value={selectedCompany}>
 
-        <MenuItem value="">
+        <MenuItem value={ALL_COMPANIES}>
           All Companies
         </MenuItem>
 
         {companies.map(({ companyName }, index) => (
           <MenuItem 
-            selected={isSelected(companyName)} 
             data-testid={`company-${index}`} 
             key={index} 
             value={companyName}>

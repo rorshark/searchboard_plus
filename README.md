@@ -47,6 +47,7 @@ This app uses the following:
 - postgresql
 - webpacker
 - react-rails
+- pg_search
 
 The architural choices were made primary for operational simplicity
 and ease of development. For example, not needing to run client and
@@ -62,3 +63,7 @@ From that point forward, UI interactions are handled by the JS client.
 For the client architecture, I've used the React Context API to
 provide data and functionality to the UI components. There's an API layer,
 a controller layer (via useSearch hook) and view components.
+
+For the first/last name search functionality I've used a postgres tsvector
+column to store the indexed search terms. This can perform searches faster 
+than ILIKE, and better support partial matches.
